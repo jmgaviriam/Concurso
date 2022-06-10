@@ -1,0 +1,5 @@
+The result of the operation 4+6/2 is:
+The result of the operation 5+8/2 is:
+The result of the operation 2+4/2 is:
+The result of the operation 6+9/3 is:
+The result of the operation 8+6/3 is:
