@@ -1,14 +1,21 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package com.mycompany.entidades;
 
-/**
- *
- * @author Jhoan Gaviria
- */
+
 public class Respuesta {
-    
+    private String respuesta;
+    private Boolean esCorrecta;
+
+    public Respuesta(String respuesta, Boolean esCorrecta) {
+        this.respuesta = respuesta;
+        this.esCorrecta = esCorrecta;
+    }
+
+    public String getRespuesta() {
+        return respuesta;
+    }
+
+    public Boolean getEsCorrecta() {
+        return esCorrecta;
+    }
 }
