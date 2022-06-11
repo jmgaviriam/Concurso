@@ -9,8 +9,8 @@ import java.io.IOException;
 
 public class HistorialDAO {
     
-    public void guardarRegistro(String nombre, int puntaje){
-        String registro = "Jugador: "+nombre+";"+"Puntaje: "+puntaje+"\n";
+    public void guardarRegistro(String nombre, int puntaje, int ronda){
+        String registro = "Jugador: "+nombre+";Ronda máxima: "+ronda+" ;Puntaje: "+puntaje+"\n";
         String path = "txt\\Registro.txt";
         
         try {

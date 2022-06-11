@@ -1,5 +1,5 @@
-El resultado de la operacion 4+6/2 es:
-El resultado de la operacion 5+8/2 es:
-El resultado de la operacion 2+4/2 es:
-El resultado de la operacion 6+9/3 es:
-El resultado de la operacion 8+6/3 es:
+El resultado de la operacion 4*2+6*8/2 es:
+El resultado de la operacion 2*5+6*9/3 es:
+El resultado de la operacion 1*7+5*10/5 es:
+El resultado de la operacion 3*2+3*8/4 es:
+El resultado de la operacion 3*5+2*12/4 es:

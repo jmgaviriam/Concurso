@@ -3,6 +3,7 @@ package com.mycompany.servicios;
 
 import com.mycompany.entidades.Historial;
 import com.mycompany.entidades.Respuesta;
+import com.mycompany.persistencia.HistorialDAO;
 import com.mycompany.persistencia.PreguntaDAO;
 import com.mycompany.persistencia.RespuestaDAO;
 import java.util.ArrayList;
@@ -22,15 +23,19 @@ public class Menu {
         nombre = lectura.next();
         //System.out.println(nombre);
      
-        return new Historial(nombre,0);
+        return new Historial(nombre,0,1);
     }
     
     public void iniciarJuego(Historial jugador){
         String respuestaJugador;
         int puntaje = jugador.getPuntaje();
         int nuevoPuntaje = 0;
+        Boolean continuar = true;
+        
+        HistorialDAO hDao = new HistorialDAO();
         System.out.println(" Hola, "+jugador.getNombrejugador()+".\n Este juego consiste en 5 rondas de preguntas con 4 posibles respuestas en las que podrás acumular un puntaje.\n Después de cada ronda podrás retirarte con el puntaje acumulado, pero si fallas lo perderás.\n");
-    // while(this.ronda<=4){
+        
+    while(this.ronda<=4){
     
             System.out.println("Esta pregunta corresponde a la ronda "+this.ronda+" y su premio corresponde a "+this.ronda*500);
             
@@ -57,18 +62,80 @@ public class Menu {
             {
                 nuevoPuntaje = puntaje+ronda*500;
                 System.out.println("La respuesta es correcta");
-                System.out.println("Su nuevo puntaje es "+nuevoPuntaje+ "Desea continuar");
+                System.out.println("Su nuevo puntaje es "+nuevoPuntaje+ "\n ¿Desea continuar? \n Sí (0) \n No (1)");
+                
+                Scanner lectura1 = new Scanner(System.in);
+                respuestaJugador = lectura1.next();
+                
+                if(respuestaJugador.equals("1")){
+                    
+                    System.out.println("Su puntaje es: "+puntaje);
+                    System.out.println("Gracias por participar");
+                    hDao.guardarRegistro(jugador.getNombrejugador(), puntaje, ronda);
+                    continuar = false;
+                    break;
+                }
                 
             }
             else{
                 System.out.println("La respuesta es incorrecta");
-                System.out.println("Su puntaje es: "+puntaje);
+                //System.out.println("Su puntaje es: "+puntaje);
                 System.out.println("Gracias por participar");
+                puntaje = 0;
+                hDao.guardarRegistro(jugador.getNombrejugador(), puntaje, ronda); 
+                continuar = false;
+                break;
             }
             
-            
             puntaje = nuevoPuntaje;
-    //}
+            ronda++;
+    }
+    
+    if(continuar==true){
+        System.out.println("Estas en la última ronda");
+        
+            
+            System.out.println("Esta pregunta corresponde a la ronda "+this.ronda+" y su premio corresponde a "+this.ronda*500);
+            
+            Random rand = new Random();
+            int int_rand = rand.nextInt(4);
+            
+            PreguntaDAO pregunta = new PreguntaDAO();
+            
+            System.out.println(pregunta.obtenerPregunta(ronda, int_rand).getPregunta());
+            
+            RespuestaDAO respuesta = new RespuestaDAO();
+            ArrayList<Respuesta> respuestas = (ArrayList<Respuesta>) respuesta.obtenerRespuesta(ronda, int_rand);
+            
+            for (int i=0; i<=3;i++)
+            {
+                System.out.println(respuestas.get(i).getRespuesta()+"\n");
+            }
+            
+            System.out.println("Ingrese su respuesta: \n");
+            Scanner lectura = new Scanner(System.in);
+            respuestaJugador = lectura.next();
+            
+            
+            if(respuestaJugador.equals(respuestas.get(4).getRespuesta()))
+            {
+                nuevoPuntaje = puntaje+ronda*500;
+                System.out.println("La respuesta es correcta");
+                System.out.println("Su puntaje total es "+nuevoPuntaje+ "\n");
+                hDao.guardarRegistro(jugador.getNombrejugador(), puntaje, ronda); 
+                               
+            }
+            else{
+                
+                System.out.println("La respuesta es incorrecta");
+                //System.out.println("Su puntaje es: "+puntaje);
+                System.out.println("Gracias por participar");
+                puntaje = 0;
+                hDao.guardarRegistro(jugador.getNombrejugador(), puntaje, ronda); 
+
+            }        
+    }
+    
     }
     
 
