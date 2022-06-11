@@ -68,7 +68,7 @@ public class Menu {
                 respuestaJugador = lectura1.next();
                 
                 if(respuestaJugador.equals("1")){
-                    
+                    puntaje = nuevoPuntaje;
                     System.out.println("Su puntaje es: "+puntaje);
                     System.out.println("Gracias por participar");
                     hDao.guardarRegistro(jugador.getNombrejugador(), puntaje, ronda);
