@@ -9,6 +9,11 @@ public class Pregunta {
     //private List<String> pregunta = new ArrayList<>();
     private String pregunta;
 
+    /**
+     *
+     * @param ronda
+     * @param pregunta
+     */
     public Pregunta(Integer ronda, String pregunta) {
         this.ronda = ronda;
         this.premio = ronda*500;

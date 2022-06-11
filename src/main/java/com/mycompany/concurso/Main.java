@@ -5,6 +5,9 @@
  */
 package com.mycompany.concurso;
 
+import com.mycompany.entidades.Historial;
+import com.mycompany.servicios.Menu;
+
 /**
  *
  * @author Jhoan Gaviria
@@ -12,6 +15,12 @@ package com.mycompany.concurso;
 public class Main {
     
         public static void main(String[] args) throws InterruptedException {
+            
+            Menu m = new Menu();
+            Historial h =  m.ingresarUsuario();
+            //System.out.println(h.getNombrejugador() + " " +h.getPuntaje());
+            m.iniciarJuego(h);
+            
             
         }
     
