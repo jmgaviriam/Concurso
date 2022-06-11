@@ -1,0 +1,6 @@
+Jugador: Jhoan;Ronda máxima: 1 ;Puntaje: 0
+Jugador: Juan;Ronda máxima: 5 ;Puntaje: 5000
+Jugador: Carlos;Ronda máxima: 1 ;Puntaje: 0
+Jugador: Maria;Ronda máxima: 1 ;Puntaje: 0
+Jugador: Juana;Ronda máxima: 1 ;Puntaje: 500
+Jugador: Sara;Ronda máxima: 2 ;Puntaje: 1500
